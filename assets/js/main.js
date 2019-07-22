@@ -15,7 +15,7 @@ var jsQuestons = [
     choiceA: "A: 0 1 2 and 0 1 2",
     choiceB: "B: 0 1 2 and 3 3 3",
     choiceC: "C: 3 3 3 and 0 1 2",
-    choiceD: "None",
+    choiceD: "D: None",
     correctAnswer : choiceC,
     answer: "Answer: C - '3 3 3 and 0 1 2'",
     discription: "Because of the event queue in JavaScript, the setTimeout callback function is called after the loop has been executed. Since the variable i in the first loop was declared using the var keyword, this value was global. During the loop, we incremented the value of i by 1 each time, using the unary operator ++. By the time the setTimeout callback function was invoked, i was equal to 3 in the first example."
@@ -35,7 +35,7 @@ var jsQuestons = [
     choiceA: "A: 1 and false",
     choiceB: "B: false and NaN",
     choiceC: "C: false and false",
-    choiceD: "None",
+    choiceD: "D: None",
     correctAnswer: choiceA,
     answer: "Answer: B - false and NaN",
     discription: "The unary plus tries to convert an operand to a number. true is 1, and false is 0. The string 'Lydia' is a truthy value. What we're actually asking, is 'is this truthy value falsy?'. This returns false."
@@ -54,16 +54,26 @@ var discription = document.getElementById("discription");
 // Show questions 
 
 
+var random1 = Math.floor(Math.random()*jsQuestons.length);
+
+question.innerHTML = `${jsQuestons[random1].question}`;
+choiceA.innerText = `${jsQuestons[random1].choiceA}`;
+choiceB.innerText = `${jsQuestons[random1].choiceB}`;
+choiceC.innerText = `${jsQuestons[random1].choiceC}`;
+choiceD.innerText = `${jsQuestons[random1].choiceD}`;
+
+
 next.addEventListener("click", showNext);
 function showNext(e) {
-  console.log(event);
+  var random2 = Math.floor(Math.random()*jsQuestons.length);
+
+  question.innerHTML = `${jsQuestons[random2].question}`;
+  choiceA.innerText = `${jsQuestons[random2].choiceA}`;
+  choiceB.innerText = `${jsQuestons[random2].choiceB}`;
+  choiceC.innerText = `${jsQuestons[random2].choiceC}`;
+  choiceD.innerText = `${jsQuestons[random2].choiceD}`;
 }
 
-question.innerHTML = `${jsQuestons[3].question}`;
-choiceA.innerText = `${jsQuestons[0].choiceA}`;
-choiceB.innerText = `${jsQuestons[0].choiceB}`;
-choiceC.innerText = `${jsQuestons[0].choiceC}`;
-choiceD.innerText = `${jsQuestons[0].choiceD}`;
 
 
 answer.addEventListener("click", showAnswer);

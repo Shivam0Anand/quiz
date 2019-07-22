@@ -45,13 +45,11 @@ input[type="checkbox"]:checked + .switch {
 .container {
   background-color: #353740;
   width: 650px;
-  margin: 0 auto;
-  margin-top: 100px;
+  margin: 50px auto;
   border: 1px solid rgb(56, 56, 56);
   box-shadow: 2px 2px 25px 30px #202122;
   border-radius: 5px;
   padding: 50px;
-  margin-bottom: 100px;
 }
 
 .options {
@@ -143,4 +141,17 @@ iframe {
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #000;
+}
+.btn {
+  background: transparent;
+  border: 1px solid #252424;
+  color: white;
+  border-radius: 10px;
+  box-shadow: 2px 2px 2px 2px #202747;
+  width: 50%;
+  margin-bottom: 10px;
+}
+.btn:hover {
+  background: #202747;
+  cursor: pointer;
 }
