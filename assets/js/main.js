@@ -1,4 +1,4 @@
-var jsQuestons = [
+var jsQuestions = [
   {
     question:
       '<iframe src="https://carbon.now.sh/embed/?bg=rgba(171%2C%20184%2C%20195%2C%201)&t=seti&wt=sharp&l=javascript&ds=true&dsyoff=20px&dsblur=68px&wc=true&wa=false&pv=0px&ph=0px&ln=true&fm=Hack&fs=16.5px&lh=133%25&si=false&es=4x&wm=false&code=function%2520sayHi()%2520%257B%250A%2520%2520console.log(name)%253B%250A%2520%2520console.log(age)%253B%250A%2520%2520var%2520name%2520%253D%2520%2522Lydia%2522%253B%250A%2520%2520let%2520age%2520%253D%252021%253B%250A%257D%250A%250AsayHi()%253B" sandbox="allow-scripts allow-same-origin"></iframe>',
@@ -6,7 +6,7 @@ var jsQuestons = [
     choiceB: " Lydia and ReferenceError",
     choiceC: " ReferenceError and 21",
     choiceD: " undefined and ReferenceError",
-    correctAnswer: choiceD,
+    correctAnswer: "D",
     answer: "Answer: D - 'undefined and ReferenceError'",
     discription:
       "Within the function, we first declare the name variable with the var keyword. This means that the variable gets hoisted (memory space is set up during the creation phase) with the default value of undefined, until we actually get to the line where we define the variable. We haven't defined the variable yet on the line where we try to log the name variable, so it still holds the value of undefined."
@@ -18,7 +18,7 @@ var jsQuestons = [
     choiceB: " 0 1 2 and 3 3 3",
     choiceC: " 3 3 3 and 0 1 2",
     choiceD: " None",
-    correctAnswer: choiceC,
+    correctAnswer: "C",
     answer: "Answer: C - '3 3 3 and 0 1 2'",
     discription:
       "Because of the event queue in JavaScript, the setTimeout callback function is called after the loop has been executed. Since the variable i in the first loop was declared using the var keyword, this value was global. During the loop, we incremented the value of i by 1 each time, using the unary operator ++. By the time the setTimeout callback function was invoked, i was equal to 3 in the first example."
@@ -30,7 +30,7 @@ var jsQuestons = [
     choiceB: " 20 and NaN",
     choiceC: " 20 and 63",
     choiceD: " NaN and 63",
-    correctAnswer: choiceB,
+    correctAnswer: "B",
     answer: "Answer: B - 'B: 20 and NaN'",
     discription:
       "Note that the value of diameter is a regular function, whereas the value of perimeter is an arrow function. With arrow functions, the this keyword refers to its current surrounding scope, unlike regular functions! This means that when we call perimeter, it doesn't refer to the shape object, but to its surrounding scope (window for example). There is no value radius on that object, which returns undefined."
@@ -42,7 +42,7 @@ var jsQuestons = [
     choiceB: " false and NaN",
     choiceC: " false and false",
     choiceD: " None",
-    correctAnswer: choiceA,
+    correctAnswer: "A",
     answer: "Answer: B - false and NaN",
     discription:
       "The unary plus tries to convert an operand to a number. true is 1, and false is 0. The string 'Lydia' is a truthy value. What we're actually asking, is 'is this truthy value falsy?'. This returns false."
@@ -54,7 +54,7 @@ var jsQuestons = [
     choiceB: "mouse[bird.size] is not valid",
     choiceC: "mouse[bird['size']] is not valid",
     choiceD: "All of them are valid",
-    correctAnswer: choiceA,
+    correctAnswer: "A",
     answer: "Answer: A - mouse.bird.size is not valid",
     discription:
       'In JavaScript, all object keys are strings (unless it is a Symbol). Even though we might not type them as strings, they are always converted into strings under the hood. JavaScript interprets (or unboxes) statements. When we use bracket notation, it sees the first opening bracket [ and keeps going until it finds the closing bracket ]. Only then, it will evaluate the statement. mouse[bird.size]: First it evaluates bird.size, which is "small". mouse["small"] returns true However, with dot notation, this does not happen. mouse does not have a key called bird, which means that mouse.bird is undefined. Then, we ask for the size using dot notation: mouse.bird.size. Since mouse.bird is undefined, we are actually asking undefined.size. This is not valid, and will throw an error similar to Cannot read property "size" of undefined.'
@@ -66,7 +66,7 @@ var jsQuestons = [
     choiceB: "Hey!",
     choiceC: "undefined",
     choiceD: "ReferenceError",
-    correctAnswer: choiceA,
+    correctAnswer: "A",
     answer: "Answer: A -",
     discription: ""
   }
@@ -204,16 +204,20 @@ var jsQuestons = [
 
 // set Questions into localstorage
 
-localStorage.setItem("questions", JSON.stringify(jsQuestons));
+localStorage.setItem("questions", JSON.stringify(jsQuestions));
 
 var newArr = JSON.parse(localStorage.getItem("questions"));
 console.log("check point ", newArr);
 
 var question = document.querySelector(".question");
 var choiceA = document.querySelector(".choiceA");
+var choiceAis = document.getElementById("choiceA");
 var choiceB = document.querySelector(".choiceB");
+var choiceBis = document.getElementById("choiceB");
 var choiceC = document.querySelector(".choiceC");
+var choiceCis = document.getElementById("choiceC");
 var choiceD = document.querySelector(".choiceD");
+var choiceDis = document.getElementById("choiceD");
 var answer = document.getElementById("answer");
 var next = document.getElementById("next");
 var discription = document.getElementById("discription");
@@ -223,17 +227,23 @@ var result = document.getElementById("answerKey");
 var random;
 
 function showQuestion() {
-  random = Math.floor(Math.random() * jsQuestons.length);
-  question.innerHTML = `${jsQuestons[random].question}`;
-  choiceA.innerText = `${jsQuestons[random].choiceA}`;
-  choiceB.innerText = `${jsQuestons[random].choiceB}`;
-  choiceC.innerText = `${jsQuestons[random].choiceC}`;
-  choiceD.innerText = `${jsQuestons[random].choiceD}`;
+  random = Math.floor(Math.random() * jsQuestions.length);
+  question.innerHTML = `${jsQuestions[random].question}`;
+  choiceA.innerText = `${jsQuestions[random].choiceA}`;
+  choiceB.innerText = `${jsQuestions[random].choiceB}`;
+  choiceC.innerText = `${jsQuestions[random].choiceC}`;
+  choiceD.innerText = `${jsQuestions[random].choiceD}`;
 }
 
 showQuestion();
 // show NEXT
 function showNext() {
+  result.style.visibility = "hidden";
+  discription.style.visibility = "hidden";
+  choiceAis.style.background = "transparent";
+  choiceBis.style.background = "transparent";
+  choiceCis.style.background = "transparent";
+  choiceDis.style.background = "transparent";
   showQuestion();
 }
 
@@ -241,10 +251,45 @@ next.addEventListener("click", showNext);
 
 answer.addEventListener("click", showAnswer);
 function showAnswer() {
-  result.innerText = `${jsQuestons[random].answer}`;
-  discription.innerText = `${jsQuestons[random].discription}`;
+  result.style.visibility = "visible";
+  discription.style.visibility = "visible";
+  result.innerText = `${jsQuestions[random].answer}`;
+  discription.innerText = `${jsQuestions[random].discription}`;
 }
 
+// Check Answer
+
+choiceA.addEventListener("click", function() {
+  if (jsQuestions[random].correctAnswer == "A") {
+    choiceAis.style.background = "green";
+  } else {
+    choiceAis.style.background = "red";
+  }
+});
+
+choiceB.addEventListener("click", function() {
+  if (jsQuestions[random].correctAnswer == "B") {
+    choiceBis.style.background = "green";
+  } else {
+    choiceBis.style.background = "red";
+  }
+});
+
+choiceC.addEventListener("click", function() {
+  if (jsQuestions[random].correctAnswer == "C") {
+    choiceCis.style.background = "green";
+  } else {
+    choiceCis.style.background = "red";
+  }
+});
+
+choiceD.addEventListener("click", function() {
+  if (jsQuestions[random].correctAnswer == "D") {
+    choiceDis.style.background = "green";
+  } else {
+    choiceDis.style.background = "red";
+  }
+});
 // Buttons gradient
 
 var btn = document.querySelector(".mouse-cursor-gradient-tracking");

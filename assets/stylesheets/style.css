@@ -1,6 +1,7 @@
 /* Body */
 body {
   background-color: rgb(39, 39, 39);
+  font-size: 16px;
 }
 
 /* Switch */
@@ -154,4 +155,25 @@ iframe {
 .btn:hover {
   background: #202747;
   cursor: pointer;
+}
+#answerKey {
+  border: 1px solid #252424;
+  visibility: hidden;
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 10px;
+  color: rgb(209, 209, 209);
+  font-size: 1.2rem;
+  background: #202122;
+}
+#discription {
+  border: 1px solid #252424;
+  padding: 10px;
+  visibility: hidden;
+  border-radius: 5px;
+  margin-top: 10px;
+  color: rgb(209, 209, 209);
+  font-size: 1.2rem;
+  background: #202122;
+  line-height: 22px;
 }
