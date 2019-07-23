@@ -1,3 +1,7 @@
+Prism.hooks.add("before-highlight", function(env) {
+  env.element.innerHTML = env.element.innerHTML.replace(/<br\s*\/?>/g, "\n");
+  env.code = env.element.textContent.replace(/^(?:\r?\n|\r)/, "");
+});
 var jsQuestions = [
   {
     question:
@@ -93,47 +97,56 @@ var jsQuestions = [
     answer: "Answer: D - Type Error",
     discription:
       "The colorChange function is static. Static methods are designed to live only on the constructor in which they are created, and cannot be passed down to any children. Since freddie is a child, the function is not passed down, and not available on the freddie instance: a TypeError is thrown."
+  },
+  {
+    question:
+      "let greeting; \n greetign = {}; // Typo! \n console.log(greetign);",
+    choiceA: "{}",
+    choiceB: "ReferenceError: greetign is not defined",
+    choiceC: "undefined",
+    choiceD: "None",
+    correctAnswer: "A",
+    answer: "{}",
+    discription:
+      'It logs the object, because we just created an empty object on the global object! When we mistyped greeting as greetign, the JS interpreter actually saw this as global.greetign = {} (or window.greetign = {} in a browser). In order to avoid this, we can use "use strict". This makes sure that you have declared a variable before setting it equal to anything.'
+  },
+  {
+    question:
+      'function bark() { \n console.log("Woof!"); \n  } \n\n bark.animal = "dog";',
+    choiceA: "Nothing, this is totally fine!",
+    choiceB: "SyntaxError. You cannot add properties to a function this way.",
+    choiceC: '"Woof" gets logged.',
+    choiceD: "ReferenceError",
+    correctAnswer: "A",
+    answer: "Nothing, this is totally fine!",
+    discription:
+      "This is possible in JavaScript, because functions are objects! (Everything besides primitive types are objects) A function is a special type of object. The code you write yourself isn't the actual function. The function is an object with properties. This property is invocable."
+  },
+  {
+    question:
+      'function Person(firstName, lastName) { \n this.firstName = firstName; \n this.lastName = lastName; \n } \n \n const member = new Person("Lydia", "Hallie"); \n Person.getFullName = function() { \n return `${this.firstName} ${this.lastName}`; \n }; \n \n console.log(member.getFullName());',
+    choiceA: "TypeError",
+    choiceB: "SyntaxError",
+    choiceC: "Lydia Hallie",
+    choiceD: "undefined undefined",
+    correctAnswer: "A",
+    answer: "TypeError",
+    discription:
+      "You can't add properties to a constructor like you can with regular objects. If you want to add a feature to all objects at once, you have to use the prototype instead. So in this case,would have made member.getFullName() work. Why is this beneficial? Say that we added this method to the constructor itself. Maybe not every Person instance needed this method. This would waste a lot of memory space, since they would still have that property, which takes of memory space for each instance. Instead, if we only add it to the prototype, we just have it at one spot in memory, yet they all have access to it!"
+  },
+  {
+    question:
+      'function Person(firstName, lastName) { \n this.firstName = firstName; \n this.lastName = lastName; \n } \n \n const lydia = new Person("Lydia", "Hallie"); \n const sarah = Person("Sarah", "Smith"); \n \n console.log(lydia); \n console.log(sarah);',
+    choiceA: 'Person {firstName: "Lydia", lastName: "Hallie"} and undefined',
+    choiceB:
+      'Person {firstName: "Lydia", lastName: "Hallie"} and Person {firstName: "Sarah", lastName: "Smith"}',
+    choiceC: 'Person {firstName: "Lydia", lastName: "Hallie"} and {}',
+    choiceD:
+      'Person {firstName: "Lydia", lastName: "Hallie"} and ReferenceError',
+    correctAnswer: "A",
+    answer: 'Person {firstName: "Lydia", lastName: "Hallie"} and undefined',
+    discription: ""
   }
-  // {
-  //   question:'',
-  //   choiceA: "",
-  //   choiceB: "",
-  //   choiceC: "",
-  //   choiceD: "",
-  //   correctAnswer: ,
-  //   answer: "",
-  //   discription: ""
-  // },
-  // {
-  //   question:'',
-  //   choiceA: "",
-  //   choiceB: "",
-  //   choiceC: "",
-  //   choiceD: "",
-  //   correctAnswer: ,
-  //   answer: "",
-  //   discription: ""
-  // },
-  // {
-  //   question:'',
-  //   choiceA: "",
-  //   choiceB: "",
-  //   choiceC: "",
-  //   choiceD: "",
-  //   correctAnswer: ,
-  //   answer: "",
-  //   discription: ""
-  // },
-  // {
-  //   question:'',
-  //   choiceA: "",
-  //   choiceB: "",
-  //   choiceC: "",
-  //   choiceD: "",
-  //   correctAnswer: ,
-  //   answer: "",
-  //   discription: ""
-  // },
   // {
   //   question:'',
   //   choiceA: "",
@@ -211,7 +224,6 @@ var jsQuestions = [
 localStorage.setItem("questions", JSON.stringify(jsQuestions));
 
 var newArr = JSON.parse(localStorage.getItem("questions"));
-console.log("check point ", newArr);
 
 var question = document.querySelector(".question");
 var choiceA = document.querySelector(".choiceA");
@@ -233,6 +245,8 @@ var random;
 function showQuestion() {
   random = Math.floor(Math.random() * jsQuestions.length);
   question.innerHTML = `${jsQuestions[random].question}`;
+  Prism.highlightAll();
+
   // question.classList.add("language-javascript");
   choiceA.innerText = `${jsQuestions[random].choiceA}`;
   choiceB.innerText = `${jsQuestions[random].choiceB}`;
@@ -267,6 +281,7 @@ function showAnswer() {
 choiceA.addEventListener("click", function() {
   if (jsQuestions[random].correctAnswer == "A") {
     choiceAis.style.background = "green";
+    setTimeout(showNext, 4000);
   } else {
     choiceAis.style.background = "red";
   }
@@ -275,6 +290,7 @@ choiceA.addEventListener("click", function() {
 choiceB.addEventListener("click", function() {
   if (jsQuestions[random].correctAnswer == "B") {
     choiceBis.style.background = "green";
+    setTimeout(showNext, 4000);
   } else {
     choiceBis.style.background = "red";
   }
@@ -283,6 +299,7 @@ choiceB.addEventListener("click", function() {
 choiceC.addEventListener("click", function() {
   if (jsQuestions[random].correctAnswer == "C") {
     choiceCis.style.background = "green";
+    setTimeout(showNext, 4000);
   } else {
     choiceCis.style.background = "red";
   }
@@ -291,6 +308,7 @@ choiceC.addEventListener("click", function() {
 choiceD.addEventListener("click", function() {
   if (jsQuestions[random].correctAnswer == "D") {
     choiceDis.style.background = "green";
+    setTimeout(showNext, 4000);
   } else {
     choiceDis.style.background = "red";
   }
