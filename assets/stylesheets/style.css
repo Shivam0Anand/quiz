@@ -115,15 +115,6 @@ input[type="checkbox"]:checked + .switch {
   --size: 200px;
 }
 
-iframe {
-  transform: scale(0.7);
-  width: 110%;
-  border-radius: 10px;
-  height: 215px;
-  border: 0;
-  overflow: hidden;
-}
-
 /* width */
 ::-webkit-scrollbar {
   width: 5px;
@@ -185,4 +176,10 @@ iframe {
 }
 .options:hover button:not(:hover) {
   opacity: 0.5;
+}
+
+pre {
+  overflow: auto;
+  word-wrap: normal;
+  white-space: pre;
 }

@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link rel="stylesheet" href="assets/stylesheets/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.0/themes/prism.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.0/prism.min.js"></script>
     <title>Quiz</title>
   </head>
   <body>
@@ -15,7 +20,10 @@
     </div>
     <!-- Questions and Options -->
     <section class="container">
-      <p class="question"></p>
+      <div>
+        <p><pre class="language-javascript"><code class="question"></code></pre></p>
+      </div>
+
       <div class="options">
         <button class="btn" id="choiceA"><p class="choiceA"></p></button>
         <button class="btn" id="choiceB"><p class="choiceB"></p></button><br />

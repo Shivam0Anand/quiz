@@ -1,7 +1,7 @@
 var jsQuestions = [
   {
     question:
-      '<iframe src="https://carbon.now.sh/embed/?bg=rgba(171%2C%20184%2C%20195%2C%201)&t=seti&wt=sharp&l=javascript&ds=true&dsyoff=20px&dsblur=68px&wc=true&wa=false&pv=0px&ph=0px&ln=true&fm=Hack&fs=16.5px&lh=133%25&si=false&es=4x&wm=false&code=function%2520sayHi()%2520%257B%250A%2520%2520console.log(name)%253B%250A%2520%2520console.log(age)%253B%250A%2520%2520var%2520name%2520%253D%2520%2522Lydia%2522%253B%250A%2520%2520let%2520age%2520%253D%252021%253B%250A%257D%250A%250AsayHi()%253B" sandbox="allow-scripts allow-same-origin"></iframe>',
+      'function sayHi() { \n console.log(name); \n console.log(age); \n var name = "Lydia";\n  let age = 21; \n } \n \n sayHi();\n ',
     choiceA: " Lydia and undefined",
     choiceB: " Lydia and ReferenceError",
     choiceC: " ReferenceError and 21",
@@ -13,7 +13,7 @@ var jsQuestions = [
   },
   {
     question:
-      '<iframe src="https://carbon.now.sh/embed/?bg=rgba(171%2C%20184%2C%20195%2C%201)&t=seti&wt=sharp&l=javascript&ds=true&dsyoff=20px&dsblur=68px&wc=true&wa=false&pv=0px&ph=0px&ln=true&fm=Hack&fs=16.5px&lh=133%25&si=false&es=2x&wm=false&code=for%2520(var%2520i%2520%253D%25200%253B%2520i%2520%253C%25203%253B%2520i%252B%252B)%2520%257B%250A%2520%2520setTimeout(()%2520%253D%253E%2520console.log(i)%252C%25201)%253B%250A%257D%250A%250Afor%2520(let%2520i%2520%253D%25200%253B%2520i%2520%253C%25203%253B%2520i%252B%252B)%2520%257B%250A%2520%2520setTimeout(()%2520%253D%253E%2520console.log(i)%252C%25201)%253B%250A%257D" sandbox="allow-scripts allow-same-origin"></iframe>',
+      "for (var i = 0; i < 3; i++) { \n  setTimeout(() => console.log(i), 1); \n } \n  \n for (let i = 0; i < 3; i++) { \n  setTimeout(() => console.log(i), 1); \n }",
     choiceA: " 0 1 2 and 0 1 2",
     choiceB: " 0 1 2 and 3 3 3",
     choiceC: " 3 3 3 and 0 1 2",
@@ -25,7 +25,7 @@ var jsQuestions = [
   },
   {
     question:
-      '<iframe src="https://carbon.now.sh/embed/?bg=rgba(171%2C%20184%2C%20195%2C%201)&t=seti&wt=sharp&l=javascript&ds=true&dsyoff=20px&dsblur=68px&wc=true&wa=false&pv=0px&ph=0px&ln=true&fm=Hack&fs=16.5px&lh=133%25&si=false&es=2x&wm=false&code=const%2520shape%2520%253D%2520%257B%250A%2520%2520radius%253A%252010%252C%250A%2520%2520diameter()%2520%257B%250A%2520%2520%2520%2520return%2520this.radius%2520*%25202%253B%250A%2520%2520%257D%252C%250A%2520%2520perimeter%253A%2520()%2520%253D%253E%25202%2520*%2520Math.PI%2520*%2520this.radius%250A%257D%253B%250A%250Aconsole.log(shape.diameter())%253B%250Aconsole.log(shape.perimeter())%253B" sandbox="allow-scripts allow-same-origin"></iframe>',
+      "const shape = { \n radius: 10, \n  diameter() { \n  return this.radius * 2; \n }, \n perimeter: () => 2 * Math.PI * this.radius \n  }; \n \n console.log(shape.diameter()); \n  console.log(shape.perimeter());",
     choiceA: " 20 and 62.83185307179586",
     choiceB: " 20 and NaN",
     choiceC: " 20 and 63",
@@ -36,8 +36,7 @@ var jsQuestions = [
       "Note that the value of diameter is a regular function, whereas the value of perimeter is an arrow function. With arrow functions, the this keyword refers to its current surrounding scope, unlike regular functions! This means that when we call perimeter, it doesn't refer to the shape object, but to its surrounding scope (window for example). There is no value radius on that object, which returns undefined."
   },
   {
-    question:
-      '<iframe src="https://carbon.now.sh/embed/?bg=rgba(171%2C%20184%2C%20195%2C%201)&t=seti&wt=sharp&l=javascript&ds=true&dsyoff=20px&dsblur=68px&wc=true&wa=false&pv=0px&ph=0px&ln=true&fm=Hack&fs=16.5px&lh=133%25&si=false&es=2x&wm=false&code=%252Btrue%253B%250A!%2522Lydia%2522%253B" sandbox="allow-scripts allow-same-origin"> </iframe>',
+    question: '+true; \n !"Lydia";',
     choiceA: " 1 and false",
     choiceB: " false and NaN",
     choiceC: " false and false",
@@ -49,7 +48,7 @@ var jsQuestions = [
   },
   {
     question:
-      '<iframe src="https://carbon.now.sh/embed/?bg=rgba(171%2C%20184%2C%20195%2C%201)&t=seti&wt=sharp&l=javascript&ds=true&dsyoff=20px&dsblur=68px&wc=true&wa=false&pv=0px&ph=0px&ln=true&fm=Hack&fs=16.5px&lh=133%25&si=false&es=2x&wm=false&code=const%2520bird%2520%253D%2520%257B%250A%2520%2520size%253A%2520%2522small%2522%250A%257D%253B%250A%250Aconst%2520mouse%2520%253D%2520%257B%250A%2520%2520name%253A%2520%2522Mickey%2522%252C%250A%2520%2520small%253A%2520true%250A%257D%253B" sandbox="allow-scripts allow-same-origin"></iframe>',
+      'const bird = { \n size: "small" \n }; \n    const mouse = {\n name: "Mickey",\n small: true \n};',
     choiceA: "mouse.bird.size is not valid",
     choiceB: "mouse[bird.size] is not valid",
     choiceC: "mouse[bird['size']] is not valid",
@@ -61,7 +60,7 @@ var jsQuestions = [
   },
   {
     question:
-      '<iframe src="https://carbon.now.sh/embed/?bg=rgba(171%2C%20184%2C%20195%2C%201)&t=seti&wt=sharp&l=javascript&ds=true&dsyoff=20px&dsblur=68px&wc=true&wa=false&pv=0px&ph=0px&ln=true&fm=Hack&fs=16.5px&lh=133%25&si=false&es=2x&wm=false&code=let%2520c%2520%253D%2520%257B%2520greeting%253A%2520%2522Hey!%2522%2520%257D%253B%250Alet%2520d%253B%250A%250Ad%2520%253D%2520c%253B%250Ac.greeting%2520%253D%2520%2522Hello%2522%253B%250Aconsole.log(d.greeting)%253B" sandbox="allow-scripts allow-same-origin"></iframe>',
+      'let c = { greeting: "Hey!" };\n let d; \n \n d = c; \n c.greeting = "Hello"; \n console.log(d.greeting);',
     choiceA: "Hello",
     choiceB: "Hey!",
     choiceC: "undefined",
@@ -73,7 +72,7 @@ var jsQuestions = [
   },
   {
     question:
-      '<iframe src="https://carbon.now.sh/embed/?bg=rgba(174%2C189%2C203%2C1)&t=tomorrow-night-bright&wt=sharp&l=javascript&ds=true&dsyoff=20px&dsblur=68px&wc=true&wa=false&pv=0px&ph=0px&ln=true&fm=Hack&fs=16.5px&lh=133%25&si=false&es=2x&wm=false&code=let%2520a%2520%253D%25203%253B%250Alet%2520b%2520%253D%2520new%2520Number(3)%253B%250Alet%2520c%2520%253D%25203%253B%250A%250Aconsole.log(a%2520%253D%253D%2520b)%253B%250Aconsole.log(a%2520%253D%253D%253D%2520b)%253B%250Aconsole.log(b%2520%253D%253D%253D%2520c)%253B" sandbox="allow-scripts allow-same-origin"></iframe>',
+      "let a = 3;\n let b = new Number(3); \n let c = 3; \n \n console.log(a == b); \n console.log(a === b);\n console.log(b === c);",
     choiceA: "true false true",
     choiceB: "false false true",
     choiceC: "true false false",
@@ -82,17 +81,19 @@ var jsQuestions = [
     answer: "Answer: C - true false false",
     discription:
       "new Number() is a built-in function constructor. Although it looks like a number, it's not really a number: it has a bunch of extra features and is an object.When we use the == operator, it only checks whether it has the same value. They both have the value of 3, so it returns true.However, when we use the === operator, both value and type should be the same. It's not: new Number() is not a number, it's an object. Both return false."
+  },
+  {
+    question:
+      'class Chameleon { \n static colorChange(newColor) { \n this.newColor = newColor; \n return this.newColor; \n } \n constructor({ newColor = "green" } = {}) { \n this.newColor = newColor; \n } \n } \n const freddie = new Chameleon({ newColor: "purple" }); \n console.log(freddie.colorChange("orange"));, \n',
+    choiceA: "orange",
+    choiceB: "purple",
+    choiceC: "green",
+    choiceD: "Type Error",
+    correctAnswer: "D",
+    answer: "Answer: D - Type Error",
+    discription:
+      "The colorChange function is static. Static methods are designed to live only on the constructor in which they are created, and cannot be passed down to any children. Since freddie is a child, the function is not passed down, and not available on the freddie instance: a TypeError is thrown."
   }
-  // {
-  //   question:'',
-  //   choiceA: "",
-  //   choiceB: "",
-  //   choiceC: "",
-  //   choiceD: "",
-  //   correctAnswer: ,
-  //   answer: "Answer: A -",
-  //   discription: ""
-  // },
   // {
   //   question:'',
   //   choiceA: "",
@@ -232,6 +233,7 @@ var random;
 function showQuestion() {
   random = Math.floor(Math.random() * jsQuestions.length);
   question.innerHTML = `${jsQuestions[random].question}`;
+  // question.classList.add("language-javascript");
   choiceA.innerText = `${jsQuestions[random].choiceA}`;
   choiceB.innerText = `${jsQuestions[random].choiceB}`;
   choiceC.innerText = `${jsQuestions[random].choiceC}`;
