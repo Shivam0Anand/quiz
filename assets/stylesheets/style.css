@@ -181,3 +181,19 @@ input[type="checkbox"]:checked + .switch {
 pre {
   border-radius: 8px;
 }
+
+@media all and (max-width: 768px) {
+  .container {
+    width: 100%;
+    padding: 1rem 0.5rem;
+    margin: 0;
+  }
+  .options {
+    display: block;
+    padding-left: 0;
+    width: 90%;
+  }
+  .btn {
+    width: 90%;
+  }
+}
