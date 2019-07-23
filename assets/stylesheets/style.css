@@ -42,7 +42,9 @@ input[type="checkbox"]:checked + .switch {
   position: absolute;
   left: -9999px;
 }
-
+/* .question { */
+/* text-align: center; */
+/* } */
 .container {
   background-color: #353740;
   width: 650px;
@@ -54,11 +56,11 @@ input[type="checkbox"]:checked + .switch {
 }
 
 .options {
-  width: 500px;
   /* border: 1px solid #000; */
   color: #aaa;
   padding: 20px;
   padding-left: 50px;
+  margin: 0 auto;
 }
 
 /* Buttons */
@@ -149,7 +151,8 @@ iframe {
   color: white;
   border-radius: 10px;
   box-shadow: 2px 2px 2px 2px #202747;
-  width: 50%;
+  width: 40%;
+  margin-left: 1rem;
   margin-bottom: 10px;
 }
 .btn:hover {
@@ -176,4 +179,10 @@ iframe {
   font-size: 1.2rem;
   background: #202122;
   line-height: 22px;
+}
+.btn {
+  transition: opacity 0.2s;
+}
+.options:hover button:not(:hover) {
+  opacity: 0.5;
 }

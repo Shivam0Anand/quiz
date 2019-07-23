@@ -68,18 +68,21 @@ var jsQuestions = [
     choiceD: "ReferenceError",
     correctAnswer: "A",
     answer: "Answer: A -",
-    discription: ""
+    discription:
+      "In JavaScript, all objects interact by reference when setting them equal to each other. First, variable c holds a value to an object. Later, we assign d with the same reference that c has to the object. When you change one object, you change all of them."
+  },
+  {
+    question:
+      '<iframe src="https://carbon.now.sh/embed/?bg=rgba(174%2C189%2C203%2C1)&t=tomorrow-night-bright&wt=sharp&l=javascript&ds=true&dsyoff=20px&dsblur=68px&wc=true&wa=false&pv=0px&ph=0px&ln=true&fm=Hack&fs=16.5px&lh=133%25&si=false&es=2x&wm=false&code=let%2520a%2520%253D%25203%253B%250Alet%2520b%2520%253D%2520new%2520Number(3)%253B%250Alet%2520c%2520%253D%25203%253B%250A%250Aconsole.log(a%2520%253D%253D%2520b)%253B%250Aconsole.log(a%2520%253D%253D%253D%2520b)%253B%250Aconsole.log(b%2520%253D%253D%253D%2520c)%253B" sandbox="allow-scripts allow-same-origin"></iframe>',
+    choiceA: "true false true",
+    choiceB: "false false true",
+    choiceC: "true false false",
+    choiceD: "false true true",
+    correctAnswer: "C",
+    answer: "Answer: C - true false false",
+    discription:
+      "new Number() is a built-in function constructor. Although it looks like a number, it's not really a number: it has a bunch of extra features and is an object.When we use the == operator, it only checks whether it has the same value. They both have the value of 3, so it returns true.However, when we use the === operator, both value and type should be the same. It's not: new Number() is not a number, it's an object. Both return false."
   }
-  // {
-  //   question:'',
-  //   choiceA: "",
-  //   choiceB: "",
-  //   choiceC: "",
-  //   choiceD: "",
-  //   correctAnswer: ,
-  //   answer: "Answer: A -",
-  //   discription: ""
-  // },
   // {
   //   question:'',
   //   choiceA: "",
