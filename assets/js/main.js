@@ -249,10 +249,21 @@ var jsQuestions = [
   // }
 ];
 
+var quizQuestionAllIndex = [];
+for (var i = 0; i < 5; i++) {
+  var newQuestionIndex = Math.floor(Math.random() * 20);
+  quizQuestionAllIndex.push(newQuestionIndex);
+}
+console.log(quizQuestionAllIndex);
+
+var quizQuestions = [];
+quizQuestionAllIndex.forEach(e => {
+  quizQuestions.push(jsQuestions[e]);
+});
+console.log(quizQuestions);
+
 // set Questions into localstorage
-
 // localStorage.setItem("questions", JSON.stringify(jsQuestions));
-
 // var newArr = JSON.parse(localStorage.getItem("questions"));
 
 var container = document.querySelector(".container");
@@ -360,18 +371,18 @@ function triggerQuiz() {
   console.log("quiz");
   container.style.visibility = "hidden";
   containerQuiz.style.visibility = "visible";
-  function showQuestionQuiz() {
-    random = Math.floor(Math.random() * jsQuestions.length);
-    questionQuiz.innerHTML = `${jsQuestions[random].question}`;
+  function showQuizQuestion() {
+    var i = 0;
+    questionQuiz.innerHTML = `${quizQuestions[i].question}`;
     Prism.highlightAll();
 
-    choiceAquiz.innerText = `${jsQuestions[random].choiceA}`;
-    choiceBquiz.innerText = `${jsQuestions[random].choiceB}`;
-    choiceCquiz.innerText = `${jsQuestions[random].choiceC}`;
-    choiceDquiz.innerText = `${jsQuestions[random].choiceD}`;
+    choiceAquiz.innerText = `${quizQuestions[i].choiceA}`;
+    choiceBquiz.innerText = `${quizQuestions[i].choiceB}`;
+    choiceCquiz.innerText = `${quizQuestions[i].choiceC}`;
+    choiceDquiz.innerText = `${quizQuestions[i].choiceD}`;
   }
 
-  showQuestionQuiz();
+  showQuizQuestion();
 
   // for (let i = 0; i < 5; i++) {
   // }
