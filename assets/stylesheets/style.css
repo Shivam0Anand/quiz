@@ -145,6 +145,7 @@ input[type="checkbox"]:checked + .switch {
   width: 40%;
   margin-left: 1rem;
   margin-bottom: 10px;
+  transition: opacity 0.2s;
 }
 .btn:hover {
   background: #202747;
@@ -171,9 +172,6 @@ input[type="checkbox"]:checked + .switch {
   background: #202122;
   line-height: 22px;
 }
-.btn {
-  transition: opacity 0.2s;
-}
 .options:hover button:not(:hover) {
   opacity: 0.5;
 }
@@ -182,13 +180,15 @@ pre {
   border-radius: 8px;
 }
 
+/* Quiz */
+
 .containerQuiz {
   position: absolute;
+  background: #000;
   top: 0;
   visibility: hidden;
   width: 500px;
   height: 500px;
-  background: #fff;
 }
 
 @media all and (max-width: 768px) {

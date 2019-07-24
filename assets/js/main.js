@@ -280,7 +280,9 @@ var answer = document.getElementById("answer");
 var next = document.getElementById("next");
 var discription = document.getElementById("discription");
 var result = document.getElementById("answerKey");
+
 // quiz
+
 var quiz = document.getElementById("quiz");
 var containerQuiz = document.querySelector(".containerQuiz");
 var questionQuiz = document.querySelector(".questionQuiz");
@@ -288,6 +290,7 @@ var choiceAquiz = document.querySelector(".choiceAquiz");
 var choiceBquiz = document.querySelector(".choiceBquiz");
 var choiceCquiz = document.querySelector(".choiceCquiz");
 var choiceDquiz = document.querySelector(".choiceDquiz");
+var QuizNext = document.getElementById("quiz-next");
 
 // Show questions
 var random;
@@ -368,24 +371,30 @@ choiceD.addEventListener("click", function() {
 quiz.addEventListener("click", triggerQuiz);
 
 function triggerQuiz() {
+  var i = 0;
+
   console.log("quiz");
   container.style.visibility = "hidden";
   containerQuiz.style.visibility = "visible";
   function showQuizQuestion() {
-    var i = 0;
+    console.log(i);
     questionQuiz.innerHTML = `${quizQuestions[i].question}`;
     Prism.highlightAll();
-
     choiceAquiz.innerText = `${quizQuestions[i].choiceA}`;
     choiceBquiz.innerText = `${quizQuestions[i].choiceB}`;
     choiceCquiz.innerText = `${quizQuestions[i].choiceC}`;
     choiceDquiz.innerText = `${quizQuestions[i].choiceD}`;
+
+    i++;
   }
 
   showQuizQuestion();
 
-  // for (let i = 0; i < 5; i++) {
-  // }
+  function QuizShowNext() {
+    console.log("yes");
+    showQuizQuestion();
+  }
+  QuizNext.addEventListener("click", QuizShowNext);
 }
 
 // Buttons gradient
