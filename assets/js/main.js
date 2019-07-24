@@ -371,6 +371,8 @@ choiceD.addEventListener("click", function() {
 quiz.addEventListener("click", triggerQuiz);
 
 function triggerQuiz() {
+  quiz.style.visibility = "hidden";
+
   var i = 0;
   var score = 0;
 
@@ -460,4 +462,12 @@ btn1.onmousemove = function(e) {
   var y = e.pageY - btn1.offsetTop - btn1.offsetParent.offsetTop;
   btn1.style.setProperty("--x", x + "px");
   btn1.style.setProperty("--y", y + "px");
+};
+
+var btn2 = document.querySelector(".mouse-cursor-gradient-tracking2");
+btn2.onmousemove = function(e) {
+  var x = e.pageX - btn2.offsetLeft - btn2.offsetParent.offsetLeft;
+  var y = e.pageY - btn2.offsetTop - btn2.offsetParent.offsetTop;
+  btn2.style.setProperty("--x", x + "px");
+  btn2.style.setProperty("--y", y + "px");
 };
