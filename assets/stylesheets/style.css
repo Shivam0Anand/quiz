@@ -182,6 +182,15 @@ pre {
   border-radius: 8px;
 }
 
+.containerQuiz {
+  position: absolute;
+  top: 0;
+  visibility: hidden;
+  width: 500px;
+  height: 500px;
+  background: #fff;
+}
+
 @media all and (max-width: 768px) {
   .container {
     width: 100%;

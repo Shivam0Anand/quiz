@@ -1,7 +1,3 @@
-Prism.hooks.add("before-highlight", function(env) {
-  env.element.innerHTML = env.element.innerHTML.replace(/<br\s*\/?>/g, "\n");
-  env.code = env.element.textContent.replace(/^(?:\r?\n|\r)/, "");
-});
 var jsQuestions = [
   {
     question:
@@ -228,6 +224,18 @@ var jsQuestions = [
     answer: "object",
     discription:
       'The rest parameter (...args.) lets us "collect" all remaining arguments into an array. An array is an object, so typeof args returns "object".'
+  },
+  {
+    question:
+      'function getAge() { \n "use strict"; \n age = 21; \n console.log(age); \n } \n \n getAge();',
+    choiceA: "21",
+    choiceB: "undefined",
+    choiceC: "ReferenceError",
+    choiceD: "TypeError",
+    correctAnswer: "C",
+    answer: "ReferenceError",
+    discription:
+      'With "use strict", you can make sure that you do not accidentally declare global variables. We never declared the variable age, and since we use "use strict", it will throw a reference error. If we did not use "use strict", it would have worked, since the property age would have gotten added to the global object.'
   }
   // {
   //   question: "",
@@ -243,10 +251,11 @@ var jsQuestions = [
 
 // set Questions into localstorage
 
-localStorage.setItem("questions", JSON.stringify(jsQuestions));
+// localStorage.setItem("questions", JSON.stringify(jsQuestions));
 
-var newArr = JSON.parse(localStorage.getItem("questions"));
+// var newArr = JSON.parse(localStorage.getItem("questions"));
 
+var container = document.querySelector(".container");
 var question = document.querySelector(".question");
 var choiceA = document.querySelector(".choiceA");
 var choiceAis = document.getElementById("choiceA");
@@ -260,6 +269,14 @@ var answer = document.getElementById("answer");
 var next = document.getElementById("next");
 var discription = document.getElementById("discription");
 var result = document.getElementById("answerKey");
+// quiz
+var quiz = document.getElementById("quiz");
+var containerQuiz = document.querySelector(".containerQuiz");
+var questionQuiz = document.querySelector(".questionQuiz");
+var choiceAquiz = document.querySelector(".choiceAquiz");
+var choiceBquiz = document.querySelector(".choiceBquiz");
+var choiceCquiz = document.querySelector(".choiceCquiz");
+var choiceDquiz = document.querySelector(".choiceDquiz");
 
 // Show questions
 var random;
@@ -269,7 +286,6 @@ function showQuestion() {
   question.innerHTML = `${jsQuestions[random].question}`;
   Prism.highlightAll();
 
-  // question.classList.add("language-javascript");
   choiceA.innerText = `${jsQuestions[random].choiceA}`;
   choiceB.innerText = `${jsQuestions[random].choiceB}`;
   choiceC.innerText = `${jsQuestions[random].choiceC}`;
@@ -335,6 +351,32 @@ choiceD.addEventListener("click", function() {
     choiceDis.style.background = "red";
   }
 });
+
+// Quiz
+
+quiz.addEventListener("click", triggerQuiz);
+
+function triggerQuiz() {
+  console.log("quiz");
+  container.style.visibility = "hidden";
+  containerQuiz.style.visibility = "visible";
+  function showQuestionQuiz() {
+    random = Math.floor(Math.random() * jsQuestions.length);
+    questionQuiz.innerHTML = `${jsQuestions[random].question}`;
+    Prism.highlightAll();
+
+    choiceAquiz.innerText = `${jsQuestions[random].choiceA}`;
+    choiceBquiz.innerText = `${jsQuestions[random].choiceB}`;
+    choiceCquiz.innerText = `${jsQuestions[random].choiceC}`;
+    choiceDquiz.innerText = `${jsQuestions[random].choiceD}`;
+  }
+
+  showQuestionQuiz();
+
+  // for (let i = 0; i < 5; i++) {
+  // }
+}
+
 // Buttons gradient
 
 var btn = document.querySelector(".mouse-cursor-gradient-tracking");
