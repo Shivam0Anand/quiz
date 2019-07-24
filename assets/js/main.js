@@ -372,6 +372,7 @@ quiz.addEventListener("click", triggerQuiz);
 
 function triggerQuiz() {
   var i = 0;
+  var score = 0;
 
   console.log("quiz");
   container.style.visibility = "hidden";
@@ -384,17 +385,63 @@ function triggerQuiz() {
     choiceBquiz.innerText = `${quizQuestions[i].choiceB}`;
     choiceCquiz.innerText = `${quizQuestions[i].choiceC}`;
     choiceDquiz.innerText = `${quizQuestions[i].choiceD}`;
-
-    i++;
   }
 
   showQuizQuestion();
 
+  // Show Next Questions
   function QuizShowNext() {
-    console.log("yes");
+    // console.log("yes");
+    i++;
     showQuizQuestion();
   }
   QuizNext.addEventListener("click", QuizShowNext);
+
+  // Check Answer
+
+  choiceAquiz.addEventListener("click", function() {
+    if (quizQuestions[i].correctAnswer == "A") {
+      score += 1;
+      console.log(score);
+      QuizShowNext();
+    } else {
+      score = score - 1;
+      console.log(score);
+    }
+  });
+
+  choiceBquiz.addEventListener("click", function() {
+    if (quizQuestions[i].correctAnswer == "B") {
+      score += 1;
+      console.log(score);
+      QuizShowNext();
+    } else {
+      score = score - 1;
+      console.log(score);
+    }
+  });
+
+  choiceCquiz.addEventListener("click", function() {
+    if (quizQuestions[i].correctAnswer == "C") {
+      score += 1;
+      console.log(score);
+      QuizShowNext();
+    } else {
+      score = score - 1;
+      console.log(score);
+    }
+  });
+
+  choiceDquiz.addEventListener("click", function() {
+    if (quizQuestions[i].correctAnswer == "D") {
+      score += 1;
+      console.log(score);
+      QuizShowNext();
+    } else {
+      score = score - 1;
+      console.log(score);
+    }
+  });
 }
 
 // Buttons gradient
