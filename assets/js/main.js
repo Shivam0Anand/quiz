@@ -145,78 +145,100 @@ var jsQuestions = [
       'Person {firstName: "Lydia", lastName: "Hallie"} and ReferenceError',
     correctAnswer: "A",
     answer: 'Person {firstName: "Lydia", lastName: "Hallie"} and undefined',
-    discription: ""
+    discription:
+      "For sarah, we didn't use the new keyword. When using new, it refers to the new empty object we create. However, if you don't add new it refers to the global object! We said that this.firstName equals 'Sarah' and this.lastName equals 'Smith'. What we actually did, is defining global.firstName = 'Sarah' and global.lastName = 'Smith'. sarah itself is left undefined, since we don't return a value from the Person function."
+  },
+  {
+    question: "What are the three phases of event propagation?",
+    choiceA: "Target > Capturing > Bubbling",
+    choiceB: "Bubbling > Target > Capturing",
+    choiceC: "Target > Bubbling > Capturing",
+    choiceD: "Capturing > Target > Bubbling",
+    correctAnswer: "D",
+    answer: "Capturing > Target > Bubbling",
+    discription:
+      "During the capturing phase, the event goes through the ancestor elements down to the target element. It then reaches the target element, and bubbling begins."
+  },
+  {
+    question: "All object have prototypes.",
+    choiceA: "True",
+    choiceB: "False",
+    choiceC: "",
+    choiceD: "",
+    correctAnswer: "B",
+    answer: "False",
+    discription:
+      "All objects have prototypes, except for the base object. The base object is the object created by the user, or an object that is created using the new keyword. The base object has access to some methods and properties, such as .toString. This is the reason why you can use built-in JavaScript methods! All of such methods are available on the prototype. Although JavaScript can't find it directly on your object, it goes down the prototype chain and finds it there, which makes it accessible for you."
+  },
+  {
+    question: 'function sum(a, b) { \n return a + b; \n } \n \n sum(1, "2");',
+    choiceA: "NaN",
+    choiceB: "TypeError",
+    choiceC: "12",
+    choiceD: "3",
+    correctAnswer: "C",
+    answer: "12",
+    discription:
+      'JavaScript is a dynamically typed language: we do not specify what types certain variables are. Values can automatically be converted into another type without you knowing, which is called implicit type coercion. Coercion is converting from one type into another. In this example, JavaScript converts the number 1 into a string, in order for the function to make sense and return a value. During the addition of a numeric type (1) and a string type ("2"), the number is treated as a string. We can concatenate strings like "Hello" + "World", so what is happening here is "1" + "2" which returns "12".'
+  },
+  {
+    question:
+      "let number = 0; \n console.log(number++); \n  console.log(++number); \n  console.log(number);",
+    choiceA: "1 1 2",
+    choiceB: "1 2 2",
+    choiceC: "0 2 2",
+    choiceD: "0 1 2",
+    correctAnswer: "C",
+    answer: "0 2 2",
+    discription:
+      "The postfix unary operator ++: </br> 1: Returns the value (this returns 0) </br> 2: Increments the value (number is now 1) </br> The prefix unary operator ++:</br> </br> 1: Increments the value (number is now 2)</br> 2: Returns the value (this returns 2)</br> This returns 0 2 2."
+  },
+  {
+    question:
+      'function getPersonInfo(one, two, three) { \n console.log(one); \n console.log(two); \n console.log(three); \n } \n \n const person = "Lydia";\n const age = 21; \n \n getPersonInfo`${person} is ${age} years old`;',
+    choiceA: 'Lydia" 21 ["", " is ", " years old"]',
+    choiceB: '["", " is ", " years old"] "Lydia" 21',
+    choiceC: '"Lydia" ["", " is ", " years old"] 21',
+    choiceD: "None",
+    correctAnswer: "B",
+    answer: '["", " is ", " years old"] "Lydia" 21',
+    discription:
+      "If you use tagged template literals, the value of the first argument is always an array of the string values. The remaining arguments get the values of the passed expressions!"
+  },
+  {
+    question:
+      'function checkAge(data) { \n if (data === { age: 18 }) { \n console.log("You are an adult!"); \n } else if (data == { age: 18 }) { \n console.log("You are still an adult."); \n } else { \n console.log(`Hmm.. You do not have an age I guess`); \n } \n } \n \n checkAge({ age: 18 });',
+    choiceA: "You are an adult!",
+    choiceB: "You are still an adult.",
+    choiceC: "Hmm.. You don't have an age I guess",
+    choiceD: "None",
+    correctAnswer: "C",
+    answer: "Hmm.. You don't have an age I guess",
+    discription:
+      "When testing equality, primitives are compared by their value, while objects are compared by their reference. JavaScript checks if the objects have a reference to the same location in memory.</br></br> The two objects that we are comparing don't have that: the object we passed as a parameter refers to a different location in memory than the object we used in order to check equality.</br></br>This is why both { age: 18 } === { age: 18 } and { age: 18 } == { age: 18 } return false."
+  },
+  {
+    question:
+      "function getAge(...args) { \n console.log(typeof args); \n } \n \n getAge(21);",
+    choiceA: "number",
+    choiceB: "array",
+    choiceC: "object",
+    choiceD: "NaN",
+    correctAnswer: "C",
+    answer: "object",
+    discription:
+      'The rest parameter (...args.) lets us "collect" all remaining arguments into an array. An array is an object, so typeof args returns "object".'
   }
   // {
-  //   question:'',
+  //   question: "",
   //   choiceA: "",
   //   choiceB: "",
   //   choiceC: "",
   //   choiceD: "",
-  //   correctAnswer: ,
+  //   correctAnswer: "",
   //   answer: "",
   //   discription: ""
-  // },
-  // {
-  //   question:'',
-  //   choiceA: "",
-  //   choiceB: "",
-  //   choiceC: "",
-  //   choiceD: "",
-  //   correctAnswer: ,
-  //   answer: "",
-  //   discription: ""
-  // },
-  // {
-  //   question:'',
-  //   choiceA: "",
-  //   choiceB: "",
-  //   choiceC: "",
-  //   choiceD: "",
-  //   correctAnswer: ,
-  //   answer: "",
-  //   discription: ""
-  // },
-  // {
-  //   question:'',
-  //   choiceA: "",
-  //   choiceB: "",
-  //   choiceC: "",
-  //   choiceD: "",
-  //   correctAnswer: ,
-  //   answer: "",
-  //   discription: ""
-  // },
-  // {
-  //   question:'',
-  //   choiceA: "",
-  //   choiceB: "",
-  //   choiceC: "",
-  //   choiceD: "",
-  //   correctAnswer: ,
-  //   answer: "",
-  //   discription: ""
-  // },
-  // {
-  //   question:'',
-  //   choiceA: "",
-  //   choiceB: "",
-  //   choiceC: "",
-  //   choiceD: "",
-  //   correctAnswer: ,
-  //   answer: "",
-  //   discription: ""
-  // },
-  // {
-  //   question:'',
-  //   choiceA: "",
-  //   choiceB: "",
-  //   choiceC: "",
-  //   choiceD: "",
-  //   correctAnswer: ,
-  //   answer: "",
-  //   discription: ""
-  // },
+  // }
 ];
 
 // set Questions into localstorage
@@ -273,7 +295,7 @@ function showAnswer() {
   result.style.visibility = "visible";
   discription.style.visibility = "visible";
   result.innerText = `${jsQuestions[random].answer}`;
-  discription.innerText = `${jsQuestions[random].discription}`;
+  discription.innerHTML = `${jsQuestions[random].discription}`;
 }
 
 // Check Answer
