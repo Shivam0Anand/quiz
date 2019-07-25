@@ -236,22 +236,55 @@ var jsQuestions = [
     answer: "ReferenceError",
     discription:
       'With "use strict", you can make sure that you do not accidentally declare global variables. We never declared the variable age, and since we use "use strict", it will throw a reference error. If we did not use "use strict", it would have worked, since the property age would have gotten added to the global object.'
+  },
+  {
+    question: 'const sum = eval("10*10+5");',
+    choiceA: "105",
+    choiceB: '"105"',
+    choiceC: "TypeError",
+    choiceD: "10*10+5",
+    correctAnswer: "A",
+    answer: "105",
+    discription:
+      "eval evaluates codes that's passed as a string. If it's an expression, like in this case, it evaluates the expression. The expression is 10 * 10 + 5. This returns the number 105."
+  },
+  {
+    question: 'sessionStorage.setItem("cool_secret", 123);',
+    choiceA: "Forever, the data doesn't get lost.",
+    choiceB: "When the user closes the tab.",
+    choiceC: "When the user closes the entire browser, not only the tab.",
+    choiceD: "When the user shuts off their computer.",
+    correctAnswer: "B",
+    answer: "When the user closes the tab.",
+    discription:
+      "The data stored in sessionStorage is removed after closing the tab.</br> If you used localStorage, the data would've been there forever, unless for example localStorage.clear() is invoked."
+  },
+  {
+    question: "var num = 8;\n var num = 10;\n \n console.log(num);",
+    choiceA: "8",
+    choiceB: "10",
+    choiceC: "SyntaxError",
+    choiceD: "ReferenceError",
+    correctAnswer: "B",
+    answer: "10",
+    discription:
+      "With the var keyword, you can declare multiple variables with the same name. The variable will then hold the latest value. You cannot do this with let or const since they're block-scoped."
+  },
+  {
+    question: "",
+    choiceA: "",
+    choiceB: "",
+    choiceC: "",
+    choiceD: "",
+    correctAnswer: "",
+    answer: "",
+    discription: ""
   }
-  // {
-  //   question: "",
-  //   choiceA: "",
-  //   choiceB: "",
-  //   choiceC: "",
-  //   choiceD: "",
-  //   correctAnswer: "",
-  //   answer: "",
-  //   discription: ""
-  // }
 ];
 
 var quizQuestionAllIndex = [];
 for (var i = 0; i < 5; i++) {
-  var newQuestionIndex = Math.floor(Math.random() * 20);
+  var newQuestionIndex = Math.floor(Math.random() * 22);
   quizQuestionAllIndex.push(newQuestionIndex);
 }
 console.log(quizQuestionAllIndex);
@@ -291,6 +324,8 @@ var choiceBquiz = document.querySelector(".choiceBquiz");
 var choiceCquiz = document.querySelector(".choiceCquiz");
 var choiceDquiz = document.querySelector(".choiceDquiz");
 var QuizNext = document.getElementById("quiz-next");
+var showScore = document.getElementById("score");
+var scoreClass = document.querySelector(".score");
 
 // Show questions
 var random;
@@ -381,12 +416,19 @@ function triggerQuiz() {
   containerQuiz.style.visibility = "visible";
   function showQuizQuestion() {
     console.log(i);
-    questionQuiz.innerHTML = `${quizQuestions[i].question}`;
-    Prism.highlightAll();
-    choiceAquiz.innerText = `${quizQuestions[i].choiceA}`;
-    choiceBquiz.innerText = `${quizQuestions[i].choiceB}`;
-    choiceCquiz.innerText = `${quizQuestions[i].choiceC}`;
-    choiceDquiz.innerText = `${quizQuestions[i].choiceD}`;
+    if (i < 5) {
+      questionQuiz.innerHTML = `${quizQuestions[i].question}`;
+      Prism.highlightAll();
+      choiceAquiz.innerText = `${quizQuestions[i].choiceA}`;
+      choiceBquiz.innerText = `${quizQuestions[i].choiceB}`;
+      choiceCquiz.innerText = `${quizQuestions[i].choiceC}`;
+      choiceDquiz.innerText = `${quizQuestions[i].choiceD}`;
+    } else {
+      containerQuiz.style.visibility = "hidden";
+      scoreClass.style.visibility = "visible";
+      showScore.innerText = score;
+      // document.write("You Scored = " + score);
+    }
   }
 
   showQuizQuestion();
@@ -409,6 +451,7 @@ function triggerQuiz() {
     } else {
       score = score - 1;
       console.log(score);
+      QuizShowNext();
     }
   });
 
@@ -420,6 +463,7 @@ function triggerQuiz() {
     } else {
       score = score - 1;
       console.log(score);
+      QuizShowNext();
     }
   });
 
@@ -431,6 +475,7 @@ function triggerQuiz() {
     } else {
       score = score - 1;
       console.log(score);
+      QuizShowNext();
     }
   });
 
@@ -442,6 +487,7 @@ function triggerQuiz() {
     } else {
       score = score - 1;
       console.log(score);
+      QuizShowNext();
     }
   });
 }

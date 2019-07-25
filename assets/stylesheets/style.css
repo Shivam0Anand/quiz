@@ -217,6 +217,26 @@ pre {
   margin-bottom: 90px;
   visibility: visible;
 }
+.button2 {
+  text-align: center;
+}
+.score {
+  color: #fff;
+  border: 1px solid #000;
+  padding: 20px;
+  font-size: 2rem;
+  position: absolute;
+  top: 50%;
+  left: 45%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  visibility: hidden;
+}
+#score {
+  text-align: center;
+}
 
 @media all and (max-width: 768px) {
   .container,
