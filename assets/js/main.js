@@ -356,8 +356,13 @@ quizQuestionAllIndex.forEach(e => {
 console.log(quizQuestions);
 
 // set Questions into localstorage
-// localStorage.setItem("questions", JSON.stringify(jsQuestions));
-// var newArr = JSON.parse(localStorage.getItem("questions"));
+localStorage.setItem("questions", JSON.stringify(jsQuestions));
+var newArr = JSON.parse(localStorage.getItem("questions"));
+
+// Set quiz question in local storage
+
+localStorage.setItem("quizQuestion", JSON.stringify(quizQuestions));
+var newQuizQuestions = JSON.parse(localStorage.getItem("quizQuestion"));
 
 var container = document.querySelector(".container");
 var question = document.querySelector(".question");
@@ -373,10 +378,11 @@ var answer = document.getElementById("answer");
 var next = document.getElementById("next");
 var discription = document.getElementById("discription");
 var result = document.getElementById("answerKey");
+var mcqPractice = document.getElementById("mcqPractice");
 
 // quiz
-
 var quiz = document.getElementById("quiz");
+var repeatQuiz = document.getElementById("repeatQuiz");
 var containerQuiz = document.querySelector(".containerQuiz");
 var questionQuiz = document.querySelector(".questionQuiz");
 var choiceAquiz = document.querySelector(".choiceAquiz");
@@ -387,79 +393,88 @@ var QuizNext = document.getElementById("quiz-next");
 var showScore = document.getElementById("score");
 var scoreClass = document.querySelector(".score");
 
-// Show questions
-var random;
+mcqPractice.addEventListener("click", function() {
+  location.reload();
+});
 
-function showQuestion() {
-  random = Math.floor(Math.random() * jsQuestions.length);
-  question.innerHTML = `${jsQuestions[random].question}`;
-  Prism.highlightAll();
+function practice() {
+  // Show questions
+  console.log("practice");
 
-  choiceA.innerText = `${jsQuestions[random].choiceA}`;
-  choiceB.innerText = `${jsQuestions[random].choiceB}`;
-  choiceC.innerText = `${jsQuestions[random].choiceC}`;
-  choiceD.innerText = `${jsQuestions[random].choiceD}`;
-}
+  var random;
 
-showQuestion();
-// show NEXT
-function showNext() {
-  result.style.visibility = "hidden";
-  discription.style.visibility = "hidden";
-  choiceAis.style.background = "transparent";
-  choiceBis.style.background = "transparent";
-  choiceCis.style.background = "transparent";
-  choiceDis.style.background = "transparent";
+  function showQuestion() {
+    random = Math.floor(Math.random() * newArr.length);
+    question.innerHTML = `${newArr[random].question}`;
+    Prism.highlightAll();
+
+    choiceA.innerText = `${newArr[random].choiceA}`;
+    choiceB.innerText = `${newArr[random].choiceB}`;
+    choiceC.innerText = `${newArr[random].choiceC}`;
+    choiceD.innerText = `${newArr[random].choiceD}`;
+  }
+
   showQuestion();
+  // show NEXT
+  function showNext() {
+    result.style.visibility = "hidden";
+    discription.style.visibility = "hidden";
+    choiceAis.style.background = "transparent";
+    choiceBis.style.background = "transparent";
+    choiceCis.style.background = "transparent";
+    choiceDis.style.background = "transparent";
+    showQuestion();
+  }
+
+  next.addEventListener("click", showNext);
+
+  answer.addEventListener("click", showAnswer);
+  function showAnswer() {
+    result.style.visibility = "visible";
+    discription.style.visibility = "visible";
+    result.innerText = `${newArr[random].answer}`;
+    discription.innerHTML = `${newArr[random].discription}`;
+  }
+
+  // Check Answer
+
+  choiceA.addEventListener("click", function() {
+    if (newArr[random].correctAnswer == "A") {
+      choiceAis.style.background = "green";
+      setTimeout(showNext, 4000);
+    } else {
+      choiceAis.style.background = "red";
+    }
+  });
+
+  choiceB.addEventListener("click", function() {
+    if (newArr[random].correctAnswer == "B") {
+      choiceBis.style.background = "green";
+      setTimeout(showNext, 4000);
+    } else {
+      choiceBis.style.background = "red";
+    }
+  });
+
+  choiceC.addEventListener("click", function() {
+    if (newArr[random].correctAnswer == "C") {
+      choiceCis.style.background = "green";
+      setTimeout(showNext, 4000);
+    } else {
+      choiceCis.style.background = "red";
+    }
+  });
+
+  choiceD.addEventListener("click", function() {
+    if (newArr[random].correctAnswer == "D") {
+      choiceDis.style.background = "green";
+      setTimeout(showNext, 4000);
+    } else {
+      choiceDis.style.background = "red";
+    }
+  });
 }
-
-next.addEventListener("click", showNext);
-
-answer.addEventListener("click", showAnswer);
-function showAnswer() {
-  result.style.visibility = "visible";
-  discription.style.visibility = "visible";
-  result.innerText = `${jsQuestions[random].answer}`;
-  discription.innerHTML = `${jsQuestions[random].discription}`;
-}
-
-// Check Answer
-
-choiceA.addEventListener("click", function() {
-  if (jsQuestions[random].correctAnswer == "A") {
-    choiceAis.style.background = "green";
-    setTimeout(showNext, 4000);
-  } else {
-    choiceAis.style.background = "red";
-  }
-});
-
-choiceB.addEventListener("click", function() {
-  if (jsQuestions[random].correctAnswer == "B") {
-    choiceBis.style.background = "green";
-    setTimeout(showNext, 4000);
-  } else {
-    choiceBis.style.background = "red";
-  }
-});
-
-choiceC.addEventListener("click", function() {
-  if (jsQuestions[random].correctAnswer == "C") {
-    choiceCis.style.background = "green";
-    setTimeout(showNext, 4000);
-  } else {
-    choiceCis.style.background = "red";
-  }
-});
-
-choiceD.addEventListener("click", function() {
-  if (jsQuestions[random].correctAnswer == "D") {
-    choiceDis.style.background = "green";
-    setTimeout(showNext, 4000);
-  } else {
-    choiceDis.style.background = "red";
-  }
-});
+practice();
 
 // Quiz
 
@@ -469,6 +484,11 @@ function triggerQuiz() {
   quiz.style.visibility = "hidden";
 
   var i = 0;
+  repeatQuiz.addEventListener("click", function() {
+    i = 0;
+    scoreClass.style.visibility = "hidden";
+    triggerQuiz();
+  });
   var score = 0;
 
   console.log("quiz");
@@ -477,12 +497,12 @@ function triggerQuiz() {
   function showQuizQuestion() {
     console.log(i);
     if (i < 5) {
-      questionQuiz.innerHTML = `${quizQuestions[i].question}`;
+      questionQuiz.innerHTML = `${newQuizQuestions[i].question}`;
       Prism.highlightAll();
-      choiceAquiz.innerText = `${quizQuestions[i].choiceA}`;
-      choiceBquiz.innerText = `${quizQuestions[i].choiceB}`;
-      choiceCquiz.innerText = `${quizQuestions[i].choiceC}`;
-      choiceDquiz.innerText = `${quizQuestions[i].choiceD}`;
+      choiceAquiz.innerText = `${newQuizQuestions[i].choiceA}`;
+      choiceBquiz.innerText = `${newQuizQuestions[i].choiceB}`;
+      choiceCquiz.innerText = `${newQuizQuestions[i].choiceC}`;
+      choiceDquiz.innerText = `${newQuizQuestions[i].choiceD}`;
     } else {
       containerQuiz.style.visibility = "hidden";
       scoreClass.style.visibility = "visible";
@@ -504,7 +524,7 @@ function triggerQuiz() {
   // Check Answer
 
   choiceAquiz.addEventListener("click", function() {
-    if (quizQuestions[i].correctAnswer == "A") {
+    if (newQuizQuestions[i].correctAnswer == "A") {
       score += 1;
       console.log(score);
       QuizShowNext();
@@ -516,7 +536,7 @@ function triggerQuiz() {
   });
 
   choiceBquiz.addEventListener("click", function() {
-    if (quizQuestions[i].correctAnswer == "B") {
+    if (newQuizQuestions[i].correctAnswer == "B") {
       score += 1;
       console.log(score);
       QuizShowNext();
@@ -528,7 +548,7 @@ function triggerQuiz() {
   });
 
   choiceCquiz.addEventListener("click", function() {
-    if (quizQuestions[i].correctAnswer == "C") {
+    if (newQuizQuestions[i].correctAnswer == "C") {
       score += 1;
       console.log(score);
       QuizShowNext();
@@ -540,7 +560,7 @@ function triggerQuiz() {
   });
 
   choiceDquiz.addEventListener("click", function() {
-    if (quizQuestions[i].correctAnswer == "D") {
+    if (newQuizQuestions[i].correctAnswer == "D") {
       score += 1;
       console.log(score);
       QuizShowNext();
