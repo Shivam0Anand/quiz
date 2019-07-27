@@ -1,6 +1,13 @@
 /* Body */
 body {
-  background-color: rgb(39, 39, 39);
+  background-image: linear-gradient(
+      to bottom,
+      rgba(58, 76, 77, 0.52),
+      rgba(45, 245, 252, 0.144)
+    ),
+    url(../img/wallpaper.png);
+  background-position: center;
+  background-size: cover;
   font-size: 16px;
 }
 
@@ -46,11 +53,11 @@ input[type="checkbox"]:checked + .switch {
 /* text-align: center; */
 /* } */
 .container {
-  background-color: #353740;
+  background-color: #353740c7;
   width: 650px;
   margin: 50px auto;
   border: 1px solid rgb(56, 56, 56);
-  box-shadow: 2px 2px 25px 30px #202122;
+  box-shadow: 2px 2px 25px 30px #2021227e;
   border-radius: 5px;
   padding: 50px;
 }
@@ -77,7 +84,7 @@ input[type="checkbox"]:checked + .switch {
 .mouse-cursor-gradient-tracking2,
 .mouse-cursor-gradient-tracking3 {
   position: relative;
-  background: transparent;
+  background: #2021224d;
   padding: 0.5rem 1.5rem;
   font-size: 1.2rem;
   border: 1px solid #202122;
@@ -145,7 +152,7 @@ input[type="checkbox"]:checked + .switch {
   background: #000;
 }
 .btn {
-  background: transparent;
+  background: #2021224d;
   border: 1px solid #252424;
   color: white;
   border-radius: 10px;
@@ -169,6 +176,7 @@ input[type="checkbox"]:checked + .switch {
   font-size: 1.2rem;
   background: #202122;
 }
+
 #discription {
   border: 1px solid #252424;
   padding: 10px;
@@ -199,16 +207,16 @@ pre {
 }
 
 .containerQuiz {
-  background-color: #353740;
+  background-color: #353740c7;
   position: absolute;
-  top: 10px;
+  top: 60px;
   left: 50%;
   -webkit-transform: translateX(-50%);
   transform: translateX(-50%);
   visibility: hidden;
   width: 650px;
   border: 1px solid rgb(56, 56, 56);
-  box-shadow: 2px 2px 25px 30px #202122;
+  box-shadow: 2px 2px 25px 30px #2021227e;
   border-radius: 5px;
   padding: 50px;
 }
@@ -223,8 +231,9 @@ pre {
 .score {
   color: #fff;
   /* border: 1px solid #000; */
+  background: #353740c7;
   width: 300px;
-  height: 300px;
+  height: 400px;
   padding: 20px;
   font-size: 2rem;
   position: absolute;
@@ -242,6 +251,9 @@ pre {
   text-align: center;
   height: 100px;
   padding: 20px;
+}
+.btn5 {
+  margin: 20px;
 }
 
 @media all and (max-width: 768px) {
