@@ -8,7 +8,12 @@ body {
     url(../img/wallpaper.jpg);
   background-position: center;
   background-size: cover;
+  font-family: "Exo 2", sans-serif;
   font-size: 16px;
+}
+p {
+  margin: 0.8rem;
+  font-size: 1.2rem;
 }
 
 /* Switch */
@@ -53,11 +58,11 @@ input[type="checkbox"]:checked + .switch {
 /* text-align: center; */
 /* } */
 .container {
-  background-color: #353740c7;
+  background-color: #2a363b;
   width: 650px;
   margin: 50px auto;
   border: 1px solid rgb(56, 56, 56);
-  box-shadow: 2px 2px 25px 30px #2021227e;
+  box-shadow: 2px 2px 48px 2px #3498c26b;
   border-radius: 5px;
   padding: 50px;
 }
@@ -84,7 +89,7 @@ input[type="checkbox"]:checked + .switch {
 .mouse-cursor-gradient-tracking2,
 .mouse-cursor-gradient-tracking3 {
   position: relative;
-  background: #2021224d;
+  background: #333f67;
   padding: 0.5rem 1.5rem;
   font-size: 1.2rem;
   border: 1px solid #202122;
@@ -152,18 +157,18 @@ input[type="checkbox"]:checked + .switch {
   background: #000;
 }
 .btn {
-  background: #2021224d;
+  background: #39b0d3;
+  padding: 0;
   border: 1px solid #252424;
-  color: white;
-  border-radius: 10px;
-  box-shadow: 2px 2px 2px 2px #202747;
+  color: rgb(48, 48, 48);
+  border-radius: 5px;
+  box-shadow: 1px 1px 1px 1px #202747;
   width: 40%;
   margin-left: 1rem;
   margin-bottom: 10px;
-  transition: opacity 0.2s;
 }
 .btn:hover {
-  background: #202747;
+  background: #adb5db;
   cursor: pointer;
 }
 #answerKey {
@@ -188,9 +193,6 @@ input[type="checkbox"]:checked + .switch {
   background: #202122;
   line-height: 22px;
 }
-.options:hover button:not(:hover) {
-  opacity: 0.5;
-}
 
 pre {
   border-radius: 8px;
@@ -207,7 +209,7 @@ pre {
 }
 
 .containerQuiz {
-  background-color: #353740c7;
+  background-color: #2a363b;
   position: absolute;
   top: 60px;
   left: 50%;
@@ -216,7 +218,7 @@ pre {
   visibility: hidden;
   width: 650px;
   border: 1px solid rgb(56, 56, 56);
-  box-shadow: 2px 2px 25px 30px #2021227e;
+  box-shadow: 2px 2px 48px 2px #3498c26b;
   border-radius: 5px;
   padding: 50px;
 }
@@ -231,7 +233,7 @@ pre {
 .score {
   color: #fff;
   /* border: 1px solid #000; */
-  background: #353740c7;
+  background: #2a363b;
   width: 300px;
   height: 400px;
   padding: 20px;
