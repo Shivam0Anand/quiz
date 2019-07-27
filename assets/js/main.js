@@ -368,7 +368,7 @@ var jsQuestions = [
   },
   {
     question:
-      '<div onclick="console.log("div")"> \n <p onclick="console.log("p")"> \n Click here! \n </p> \n </div>',
+      '< div onclick="console.log("div")"> \n < p onclick="console.log("p")"> \n Click here! \n < /p> \n < /div>',
     choiceA: "p div",
     choiceB: "div p",
     choiceC: "p",
@@ -562,7 +562,9 @@ function practice() {
   // show NEXT
   function showNext() {
     result.style.visibility = "hidden";
+    result.style.height = 0;
     discription.style.visibility = "hidden";
+    discription.style.height = 0;
     choiceAis.style.background = "transparent";
     choiceBis.style.background = "transparent";
     choiceCis.style.background = "transparent";
@@ -574,7 +576,9 @@ function practice() {
 
   answer.addEventListener("click", showAnswer);
   function showAnswer() {
+    result.style.height = "auto";
     result.style.visibility = "visible";
+    discription.style.height = "auto";
     discription.style.visibility = "visible";
     result.innerText = `${newArr[random].answer}`;
     discription.innerHTML = `${newArr[random].discription}`;
