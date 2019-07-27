@@ -565,10 +565,10 @@ function practice() {
     result.style.height = 0;
     discription.style.visibility = "hidden";
     discription.style.height = 0;
-    choiceAis.style.background = "transparent";
-    choiceBis.style.background = "transparent";
-    choiceCis.style.background = "transparent";
-    choiceDis.style.background = "transparent";
+    choiceAis.style.background = "#39b0d3";
+    choiceBis.style.background = "#39b0d3";
+    choiceCis.style.background = "#39b0d3";
+    choiceDis.style.background = "#39b0d3";
     showQuestion();
   }
 
