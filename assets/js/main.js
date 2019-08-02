@@ -739,6 +739,7 @@ btn1.onmousemove = function(e) {
 };
 
 var btn2 = document.querySelector(".mouse-cursor-gradient-tracking2");
+
 btn2.onmousemove = function(e) {
   var x = e.pageX - btn2.offsetLeft - btn2.offsetParent.offsetLeft;
   var y = e.pageY - btn2.offsetTop - btn2.offsetParent.offsetTop;
