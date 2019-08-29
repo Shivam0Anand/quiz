@@ -569,6 +569,7 @@ function practice() {
     choiceBis.style.background = "#39b0d3";
     choiceCis.style.background = "#39b0d3";
     choiceDis.style.background = "#39b0d3";
+    
     showQuestion();
   }
 
