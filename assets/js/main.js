@@ -491,13 +491,13 @@ for (var i = 0; i < 5; i++) {
   var newQuestionIndex = Math.floor(Math.random() * 32);
   quizQuestionAllIndex.push(newQuestionIndex);
 }
-console.log(quizQuestionAllIndex);
+// console.log(quizQuestionAllIndex);
 
 var quizQuestions = [];
 quizQuestionAllIndex.forEach(e => {
   quizQuestions.push(jsQuestions[e]);
 });
-console.log(quizQuestions);
+// console.log(quizQuestions);
 
 // set Questions into localstorage
 localStorage.setItem("questions", JSON.stringify(jsQuestions));
@@ -543,7 +543,7 @@ mcqPractice.addEventListener("click", function() {
 
 function practice() {
   // Show questions
-  console.log("practice");
+  // console.log("practice");
 
   var random;
 
@@ -569,7 +569,7 @@ function practice() {
     choiceBis.style.background = "#39b0d3";
     choiceCis.style.background = "#39b0d3";
     choiceDis.style.background = "#39b0d3";
-    
+
     showQuestion();
   }
 
